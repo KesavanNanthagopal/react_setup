@@ -13,7 +13,7 @@ const initialState: LoginState = {
   error: null,
 };
 
-export const fetchExampleData = createApiThunk<Record<string, unknown>, any[]>(
+export const loginData = createApiThunk<Record<string, unknown>, any[]>(
   'example/fetchData',
   loginExample
 );
@@ -24,15 +24,15 @@ const loginSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchExampleData.pending, (state) => {
+      .addCase(loginData.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchExampleData.fulfilled, (state, action) => {
+      .addCase(loginData.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(fetchExampleData.rejected, (state, action) => {
+      .addCase(loginData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });
