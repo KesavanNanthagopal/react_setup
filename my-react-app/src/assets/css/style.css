@@ -1,10 +1,14 @@
 .login-main-container{
     width: 90vw !important;
-    height: 90vh !important;
+    height: 100vh !important;
     overflow: hidden;
 }
 .loginCard{
+    top: 5%;
+    left: 10%;
     width: 90% !important;
+    height: 90% !important;
+    justify-items: center;
     border: none;
     position: relative;
     backdrop-filter: blur(7px);
@@ -22,3 +26,95 @@
 .textGray{
     color: rgb(151, 151, 151);
 }
+/* Custom styles for sidebar and header */
+.sidebar {
+    background-color: #2C3E50; /* Restaurant theme color */
+    height: 100vh;
+    transition: width 0.3s ease;
+    width: 250px;
+  }
+  
+  .sidebar.shrink {
+    width: 80px;
+  }
+  
+  .sidebar .menu-icon {
+    display: inline-block;
+  }
+  
+  .sidebar.shrink .menu-icon {
+    display: inline-block;
+  }
+  
+  .sidebar .menu-text {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .main-content {
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+  }
+  
+  .header {
+    background-color: #FF6F61 ; /* Restaurant theme color */
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .footer {
+    background-color: #34495E; /* Restaurant theme color */
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-container {
+    position: relative;
+  }
+  
+  .profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 50px; /* Adjust based on your layout */
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-menu .btn {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-item{
+    font-size: large !important;
+    font-weight: 600;
+  }
+  
