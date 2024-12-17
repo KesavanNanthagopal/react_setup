@@ -1,0 +1,24 @@
+.login-main-container{
+    width: 90vw !important;
+    height: 90vh !important;
+    overflow: hidden;
+}
+.loginCard{
+    width: 90% !important;
+    border: none;
+    position: relative;
+    backdrop-filter: blur(7px);
+}
+.loginFormCard{
+    background-color: #fffefb !important;
+
+}
+.welcomeHeader{
+    font-weight: 600;
+}
+.buttonBorder{
+    border-radius: 40px !important;
+}
+.textGray{
+    color: rgb(151, 151, 151);
+}
