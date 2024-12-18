@@ -177,3 +177,100 @@
 .nav-link .menu-text {
   margin-left: 10px;
 }
+
+
+/*-------------------------------------------MENU----------------------------------------------*/
+.menu .input-group-text {
+  background-color: #FC8019;
+  color: #fff;
+  border-radius: 5px 0 0 5px;
+}
+
+.menu .form-control {
+  border-radius: 0 5px 5px 0;
+}
+
+.menu .card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  transition: box-shadow 0.3s ease;
+}
+
+.menu .card:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.menu .card-img-top {
+  max-height: 100px;
+  object-fit:contain;
+  margin-bottom: 10px;
+}
+
+.menu .btn ,.mainButton{
+  background-color: #FC8019;
+  color: #fff;
+  border-radius: 5px;
+}
+.mainButtonCancel{
+  background-color: rgb(161, 159, 159);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.mainButtonCancel:hover{
+  border-color: white;
+}
+
+.mainButton:hover{
+  border-color: white;
+}
+
+.menu .input-group {
+  margin-bottom: 20px;
+}
+
+.menu .card-body {
+  text-align: center;
+}
+
+.menu-row {
+  min-height: 60vh;
+  overflow-y: auto;
+}
+
+.menu h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.menuheader,.menuName{
+  color: #FC8019 !important;
+  font-weight: bolder;
+}
+
+.menuName{
+  font-size:medium;
+}
+
+.menuPrice{
+  font-weight: 600;
+  color: #a3a2a2;
+  font-size: small;
+}
+
+/* ------------------------------------------------ADD MENU ------------------------------------------*/
+
+.modal-header {
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  border-top: 1px solid #ddd;
+}
