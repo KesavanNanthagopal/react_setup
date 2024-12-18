@@ -1,120 +1,179 @@
-.login-main-container{
-    width: 90vw !important;
-    height: 100vh !important;
-    overflow: hidden;
+.login-main-container {
+  width: 90vw !important;
+  height: 100vh !important;
+  overflow: hidden;
 }
-.loginCard{
-    top: 5%;
-    left: 10%;
-    width: 90% !important;
-    height: 90% !important;
-    justify-items: center;
-    border: none;
-    position: relative;
-    backdrop-filter: blur(7px);
+
+.loginCard {
+  top: 5%;
+  left: 10%;
+  width: 90% !important;
+  height: 90% !important;
+  justify-items: center;
+  border: none;
+  position: relative;
+  backdrop-filter: blur(7px);
 }
-.loginFormCard{
-    background-color: #fffefb !important;
+
+.loginFormCard {
+  background-color: #fffefb !important;
 
 }
-.welcomeHeader{
-    font-weight: 600;
+
+.welcomeHeader {
+  font-weight: 600;
 }
-.buttonBorder{
-    border-radius: 40px !important;
+
+.buttonBorder {
+  border-radius: 40px !important;
 }
-.textGray{
-    color: rgb(151, 151, 151);
+
+.textGray {
+  color: rgb(151, 151, 151);
 }
+
 /* Custom styles for sidebar and header */
 .sidebar {
-    background-color: #2C3E50; /* Restaurant theme color */
-    height: 100vh;
-    transition: width 0.3s ease;
-    width: 250px;
-  }
-  
-  .sidebar.shrink {
-    width: 80px;
-  }
-  
-  .sidebar .menu-icon {
-    display: inline-block;
-  }
-  
-  .sidebar.shrink .menu-icon {
-    display: inline-block;
-  }
-  
-  .sidebar .menu-text {
-    display: inline-block;
-    margin-left: 10px;
-  }
-  
-  .main-content {
-    transition: margin-left 0.3s ease;
-    padding: 20px;
-  }
-  
-  .header {
-    background-color: #FF6F61 ; /* Restaurant theme color */
-    color: white;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .footer {
-    background-color: #34495E; /* Restaurant theme color */
-    color: white;
-    padding: 15px;
-    text-align: center;
-  }
+  background-color: #FFFFFF;
+  /* Restaurant theme color */
+  height: 100vh;
+  transition: width 0.3s ease;
+  width: 250px;
+  border-right: 1px solid rgb(164, 163, 163);
+}
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .header-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-container {
-    position: relative;
-  }
-  
-  .profile-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 50px; /* Adjust based on your layout */
-    right: 0;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dropdown-menu .btn {
-    margin: 5px 0;
-    display: flex;
-    align-items: center;
-  }
+.sidebar.shrink {
+  width: 4%;
+}
 
-  .nav-item{
-    font-size: large !important;
-    font-weight: 600;
-  }
-  
+.sidebar .menu-icon {
+  display: inline-block;
+}
+
+.sidebar.shrink .menu-icon {
+  display: inline-block;
+}
+
+.sidebar .menu-text {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.main-content {
+  transition: margin-left 0.3s ease;
+  padding: 20px;
+}
+
+.header {
+  background-color: #FC8019;
+  /* Restaurant theme color */
+  color: #FFFFFF;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-style {
+  font-size: 30px;
+  font-weight: 900;
+  /* Still include bold if applicable */
+}
+
+.icon-style:hover {
+  cursor: pointer;
+}
+
+.footer {
+  background-color: #FFFFFF;
+  /* Restaurant theme color */
+  color: rgb(165, 165, 165);
+  padding: 15px;
+  text-align: center;
+  border: 1px solid rgb(175, 174, 174);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.profile-container {
+  position: relative;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  /* Adjust based on your layout */
+  right: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu .btn {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  font-size: large !important;
+  font-weight: 600;
+}
+
+.userName {
+  color: #FFFFFF;
+  font-size: larger;
+  font-weight: 600;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.navColors{
+  color:  gray !important;
+}
+
+.navColors:hover {
+  background-color: #FC8019; /* Hover background color */
+  color: #FFFFFF !important; /* Hover text and icon color */
+  border-radius: 3px !important;
+  transform: scale(1.07); /* Zoom effect */
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+
+.nav-link.active {
+  background-color: #FC8019; /* Active background color */
+  color: #FFFFFF !important; /* Active text and icon color */
+  border-radius: 3px !important;
+
+}
+
+.nav-link .menu-text {
+  margin-left: 10px;
+}
