@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import loginImage from '../assets/images/lgoinPage.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ const Login = () => {
     });
 
     const [showPassword, setShowPassword] = useState(false);
+    const navigate= useNavigate()
+
 
     const togglePasswordVisibility = () => {
         setShowPassword((prev) => !prev);
@@ -50,6 +53,7 @@ const Login = () => {
             setErrors(newErrors);
             return;
         }
+        navigate('/dashboard')
         console.log('Form Submitted:', formData);
     };
 

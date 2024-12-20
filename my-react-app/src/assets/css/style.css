@@ -274,3 +274,60 @@
 .modal-footer {
   border-top: 1px solid #ddd;
 }
+.add-menu-popup{
+  padding-top: 10% !important;
+}
+/*------------------------------------------------- Conformation popup -------------------------------*/
+.custom-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+.custom-modal {
+  z-index: 1050;
+}
+
+.custom-modal-title {
+  color: orange;
+  font-weight: 600;
+}
+
+.custom-modal-text {
+  color: gray;
+}
+
+.custom-close-icon {
+  color: gray;
+  opacity: 0.8;
+}
+
+.custom-close-icon:hover {
+  color: orange;
+  opacity: 1;
+}
+
+.custom-confirm-btn {
+  background-color: orange !important;
+  color: white !important;
+  border: none;
+  width: 100px;
+}
+
+.custom-confirm-btn:hover {
+  background-color: darkorange !important;
+}
+
+.custom-cancel-btn {
+  background-color: gray !important;
+  color: white !important;
+  border: none;
+  width: 100px;
+
+}
+
+.custom-cancel-btn:hover {
+  background-color: darkgray !important;
+}
+.custom-modal {
+  padding-top: 18% !important;
+}

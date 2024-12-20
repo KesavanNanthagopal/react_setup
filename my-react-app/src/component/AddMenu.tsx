@@ -38,7 +38,7 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
         />
       )}
       {isVisible && (
-        <div className="modal show" style={{ display: "block" }} onClick={onClose}>
+        <div className="modal show add-menu-popup" style={{ display: "block" }} onClick={onClose}>
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
