@@ -61,6 +61,7 @@
 
 .main-content {
   transition: margin-left 0.3s ease;
+  background-color: #fcf9f7;
   padding: 20px;
 }
 
@@ -363,4 +364,80 @@
 }
 .custom-modal {
   padding-top: 18% !important;
+}
+
+/*----------------------------------------------- Profile screen ------------------------------------------*/
+.profile-page {
+  padding: 20px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 2%;
+  border: 1px solid orange;
+  border-radius: 5px;
+}
+
+.profile-info{
+  margin-top: 2%;
+  padding: 2%;
+  border: 1px solid orange;
+  border-radius: 5px;
+}
+
+.profile-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.app-text {
+  color: gray;
+  margin-right: 5px;
+}
+
+.app-text,.profile-text,.profile-header-text{
+  font-size:large;
+  font-weight: 600;
+}
+.profile-header-text{
+  color: gray;
+}
+
+.profile-text {
+  color: orange;
+  margin-left: 5px;
+}
+
+.profile-banner {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.banner-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.profile-user-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.info-label {
+  color: orange;
+  font-weight: bold;
+}
+
+.info-value {
+  color: gray;
+  margin-left: 10px;
 }

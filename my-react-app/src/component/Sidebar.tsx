@@ -40,6 +40,15 @@ const Sidebar = ({ isOpen }: any) => {
                         {!isOpen && <span className="menu-text">Order</span>}
                     </span>
                 </li>
+                <li className="nav-item pb-1">
+                    <span
+                        className={`nav-link navColors ${isActive("/profile") ? "active" : ""}`}
+                        onClick={() => handleNavigation("/profile")}
+                    >
+                        <i className="bi bi-person-lines-fill"></i>
+                        {!isOpen && <span className="menu-text">Profile</span>}
+                    </span>
+                </li>
             </ul>
         </div>
     );
