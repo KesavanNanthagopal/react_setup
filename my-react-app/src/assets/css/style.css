@@ -277,6 +277,39 @@
 .add-menu-popup{
   padding-top: 10% !important;
 }
+.veg-radio,.non-veg-radio {
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.veg-radio.selected {
+  border-color: green;
+  background-color: #e7fbe7;
+  color: green;
+}
+
+.veg-radio:not(.selected):hover {
+  border-color: green;
+  background-color: #e7fbe7;
+  color: green;
+}
+
+.non-veg-radio:not(.selected):hover {
+  border-color: red;
+  background-color: #ffecec;
+  color: red;
+}
+
+.non-veg-radio.selected {
+  border-color: red;
+  background-color: #ffecec;
+  color: red;
+}
+
 /*------------------------------------------------- Conformation popup -------------------------------*/
 .custom-backdrop {
   background-color: rgba(0, 0, 0, 0.5);
