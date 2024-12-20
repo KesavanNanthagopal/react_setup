@@ -322,7 +322,7 @@
 }
 
 .custom-modal-title {
-  color: orange;
+  color: #ff8c00;
   font-weight: 600;
 }
 
@@ -336,12 +336,12 @@
 }
 
 .custom-close-icon:hover {
-  color: orange;
+  color: #ff8c00;
   opacity: 1;
 }
 
 .custom-confirm-btn {
-  background-color: orange !important;
+  background-color: #ff8c00 !important;
   color: white !important;
   border: none;
   width: 100px;
@@ -441,3 +441,77 @@
   color: gray;
   margin-left: 10px;
 }
+
+/*------------------------------------------ Order screen --------------------------------------------*/
+.order-btn-group{
+  background-color: #efefef;
+}
+.order-row{
+  height: 100% !important;
+}
+.order-btn-active{
+  color: #fcf9f7 !important;
+  background-color: #FC8019 !important;
+}
+
+.order-btn-color{
+  color: black !important;
+  background-color: #efefef !important;
+}
+.first-container {
+  border: 1px solid rgb(180, 179, 179) !important;
+  padding: 2% !important;
+  border-radius: 20px;
+}
+
+.order-timing{
+  font-size: small;
+}
+.order-details-header{
+  font-weight: 600;
+  color: #555454;
+}
+
+.order-accept-button,.order-reject-button{
+  padding: 10px 20px;
+  margin-left:10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.order-accept-button{
+  background-color: #ff8c00 ;
+  color: #fff;
+  border: none;
+}
+
+.order-reject-button{
+  background-color: white ;
+  color: #ff8c00;
+  border: 2px solid #ff8c00;
+}
+.order-details-container{
+  background-color: #ffffff;
+  border-radius: 8px;
+  height: 400px ;
+}
+
+.order-button-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.order-overall-container{
+  background-color: #f8f9fa;
+}
+.order-list{
+  max-height: 75vh;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+/* .order-details-mid-container{
+  border: 2px solid gray;
+  width: fit-content;
+} */
