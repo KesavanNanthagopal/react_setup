@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 interface AddMenuModalProps {
   isVisible: boolean;
@@ -11,9 +11,11 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
   const [deliveryFee, setDeliveryFee] = useState("");
   const [gst, setGst] = useState("");
   const [vegType, setVegType] = useState("veg");
+  const [image, setImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleSubmit = () => {
-    console.log("Form Submitted", { vegType, itemName, itemPrice, deliveryFee, gst });
+    console.log("Form Submitted", { vegType, itemName, itemPrice, deliveryFee, gst, image });
     clearStates();
     onClose();
   };
@@ -23,14 +25,37 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
     onClose();
   };
 
-  const clearStates=()=>{
+  const clearStates = () => {
     setItemName("");
-    setItemPrice(""); 
+    setItemPrice("");
     setDeliveryFee("");
     setGst("");
     setVegType("veg");
-  }
-  
+    setImage(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (reader.result) {
+          setImage(reader.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageDelete = () => {
+    setImage(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
 
   return (
     <>
@@ -129,6 +154,48 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
                     />
                   </div>
                 </div>
+
+                <div className="mb-3">
+                  <label htmlFor="imageUpload" className="form-label">Select Image</label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="imageUpload"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    ref={fileInputRef}
+                  />
+                </div>
+                
+                {image && (
+                  <div className="mb-3 d-flex justify-content-center position-relative">
+                    <img
+                      src={image}
+                      alt="Image Preview"
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                      }}
+                    />
+                    <button
+                      type="button"
+                      className="btn btn-danger position-absolute top-0 end-0"
+                      style={{
+                        width: "25px",
+                        height: "25px",
+                        borderRadius: "50%",
+                        padding: "0",
+                        fontSize: "14px",
+                        lineHeight: "1",
+                      }}
+                      onClick={handleImageDelete}
+                    >
+                      X
+                    </button>
+                  </div>
+                )}
               </div>
               <div className="modal-footer">
                 <button type="button" className="mainButtonCancel" onClick={handleCancel}>
