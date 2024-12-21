@@ -3,38 +3,25 @@ import loginImage from '../assets/images/lgoinPage.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
-    const [errors, setErrors] = useState({
-        email: '',
-        password: '',
-    });
-
+    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [errors, setErrors] = useState({ email: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
-    const navigate= useNavigate()
+    const navigate = useNavigate();
 
+    const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
 
-    const togglePasswordVisibility = () => {
-        setShowPassword((prev) => !prev);
-    };
+    const validateEmail = (email:any) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    const validateEmail = (email: any) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const handleInputChange = (e: any) => {
+    const handleInputChange = (e:any) => {
         const { id, value } = e.target;
         setFormData((prev) => ({ ...prev, [id]: value }));
         setErrors((prev) => ({ ...prev, [id]: '' }));
     };
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
         let valid = true;
-        const newErrors: any = {};
+        const newErrors:any= {};
 
         if (!formData.email) {
             valid = false;
@@ -53,7 +40,7 @@ const Login = () => {
             setErrors(newErrors);
             return;
         }
-        navigate('/dashboard')
+        navigate('/dashboard');
         console.log('Form Submitted:', formData);
     };
 
@@ -61,19 +48,19 @@ const Login = () => {
         <div className="login-main-container">
             <div className="card loginCard" style={{ height: '100%' }}>
                 <div className="row w-100 h-100">
-                    <div className="col-6 d-flex justify-content-center align-items-center">
+                    <div className="col-md-6 col-12 d-flex justify-content-center align-items-center">
                         <img
                             src={loginImage}
                             alt="Restaurant Logo"
-                            className="login-image"
-                            width={"85%"}
-                            height={'auto'}
+                            className="login-image img-fluid"
+                            style={{ maxWidth: '85%' }}
                         />
                     </div>
-                    <div className="col-6 d-flex">
-                        <div className="card loginFormCard" style={{ width: '100%', height: "100%" }}>
+
+                    <div className="col-md-6 col-12 d-flex">
+                        <div className="card loginFormCard w-100 h-100 p-4">
                             <div className="text-center my-4">
-                                <img src={loginImage} alt="" width="50px" height="auto" />
+                                <img src={loginImage} alt="" className="img-fluid" style={{ width: '50px' }} />
                             </div>
                             <h1 className="card-title text-center welcomeHeader">Welcome Back!</h1>
                             <p className="card-text text-center">Please enter your details.</p>
@@ -81,7 +68,9 @@ const Login = () => {
                             <div className="card-body">
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-3 text-start">
-                                        <label htmlFor="email" className="form-label textGray">Email address</label>
+                                        <label htmlFor="email" className="form-label textGray">
+                                            Email address
+                                        </label>
                                         <input
                                             type="email"
                                             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
@@ -92,32 +81,35 @@ const Login = () => {
                                         />
                                         {errors.email && <div className="invalid-feedback">{errors.email}</div>}
                                     </div>
+
                                     <div className="mb-3 text-start">
                                         <label htmlFor="password" className="form-label">
                                             Password
                                         </label>
-                                        <div className='position-relative'>
+                                        <div className="position-relative">
                                             <input
-                                                type={showPassword ? "text" : "password"}
+                                                type={showPassword ? 'text' : 'password'}
                                                 className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                                 id="password"
                                                 placeholder="Enter your password"
                                                 value={formData.password}
                                                 onChange={handleInputChange}
                                             />
-                                            {errors.password ? <div className="invalid-feedback">{errors.password}</div> :
+                                            {errors.password ? (
+                                                <div className="invalid-feedback">{errors.password}</div>
+                                            ) : (
                                                 <span
                                                     className="position-absolute top-50 end-0 translate-middle-y me-3"
-                                                    style={{ cursor: "pointer" }}
+                                                    style={{ cursor: 'pointer' }}
                                                     onClick={togglePasswordVisibility}
                                                 >
-                                                    <i className={`bi ${showPassword ? "bi-eye" : "bi-eye-slash"}`}></i>
+                                                    <i className={`bi ${showPassword ? 'bi-eye' : 'bi-eye-slash'}`}></i>
                                                 </span>
-                                            }
+                                            )}
                                         </div>
                                     </div>
                                     <div className="text-start my-2">
-                                        <p className='textGray'>Forgot Password?</p>
+                                        <p className="textGray">Forgot Password?</p>
                                     </div>
                                     <div className="text-center">
                                         <button
