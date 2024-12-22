@@ -519,7 +519,18 @@
   padding: 15px;
 }
 
-/* .order-details-mid-container{
-  border: 2px solid gray;
-  width: fit-content;
-} */
+.order-details-id{
+  font-size:large;
+  font-weight: 600;
+  color: #555454;
+}
+.order-details-date{
+  font-size: small;
+  font-weight: 400;
+  color: #a3a2a2;
+}
+.order-details-content{
+  border: 1px solid rgb(160, 158, 158);
+  border-radius: 5px;
+  margin: 10px;
+}
