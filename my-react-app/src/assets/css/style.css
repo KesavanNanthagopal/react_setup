@@ -319,6 +319,16 @@
   color: red;
 }
 
+.custom-menu-add{
+  color: white;
+  background-color: #ff8c00;
+}
+
+.custom-menu-add:hover{
+  color: #555454 !important;
+  border-color: #ff8c00 !important;
+}
+
 /*------------------------------------------------- Conformation popup -------------------------------*/
 .custom-backdrop {
   background-color: rgba(0, 0, 0, 0.5);

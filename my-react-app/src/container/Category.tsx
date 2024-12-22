@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import biryani from '../assets/images/biryani.jpg';
-import AddMenuModal from '../component/AddMenu';
 import { menuItems } from '../utils/const';
 import ConformationPopup from "../component/ConformationPopup";
+import AddCatagoryModalProps from '../component/AddCategory';
 
-function Menu() {
+function Category() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
-    const [menuId, setMenuId] = useState(null);
+    const [category, setCatagory] = useState(null);
     const [isMobilePage, setMobilePage] = useState(false);
 
     const handleEdit = (id: any) => {
-        setMenuId(id);
+        setCatagory(id);
         setIsModalVisible(true);
     };
 
     const handleDelete = (id: any) => {
-        setMenuId(id);
+        setCatagory(id);
         setShowPopup(true);
     };
 
@@ -43,7 +43,6 @@ function Menu() {
         };
     }, []);
 
-console.log(isMobilePage,"ch")
     return (
         <div className="container mt-4 menu">
             <div className="row mb-4">
@@ -59,7 +58,7 @@ console.log(isMobilePage,"ch")
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="Search menu..."
+                            placeholder="Search Category..."
                             aria-label="Search"
                             aria-describedby="basic-addon1"
                         />
@@ -67,11 +66,11 @@ console.log(isMobilePage,"ch")
                 </div>
                 <div className="col-md-6 col-sm-6 col-2 text-md-end text-center">
                     <button className="btn custom-menu-add" onClick={toggleModal}>
-                        {isMobilePage ? "+" : "Add Menu"}
+                        {isMobilePage ? "+" : "Add Category"}
                     </button>
                 </div>
             </div>
-            <h3 className="menuheader">Menu</h3>
+            <h3 className="menuheader">Category</h3>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 scrollable-container">
                 {menuItems.map((item) => (
                     <div className="col" key={item.id}>
@@ -99,10 +98,10 @@ console.log(isMobilePage,"ch")
                     </div>
                 ))}
             </div>
-            <AddMenuModal isVisible={isModalVisible} onClose={toggleModal} />
+            <AddCatagoryModalProps isVisible={isModalVisible} onClose={toggleModal} />
             {showPopup && (
                 <ConformationPopup
-                    message="Do you want to delete this menu?"
+                    message="Do you want to delete this category?"
                     confirmButtonLabel="Yes"
                     cancelButtonLabel="No"
                     onConfirm={handleConformDelete}
@@ -113,4 +112,4 @@ console.log(isMobilePage,"ch")
     );
 }
 
-export default Menu;
+export default Category;

@@ -6,6 +6,7 @@ import Dashboard from './container/Dashboard'
 import Menu from './container/Menu'
 import ProfilePage from './container/Profile'
 import OrderScreen from './container/Orders'
+import Catagory from './container/Category'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="/" element={<Layout />}>
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="catagory" element={<Catagory />} />
         <Route path="menu" element={<Menu />} />
         <Route path="order" element={<OrderScreen />} />
         <Route path="profile" element={<ProfilePage />} />

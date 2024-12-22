@@ -62,6 +62,15 @@ const Sidebar = ({ isOpen }: any) => {
                         {(!isOpen && !isMobilePage) && <span className="menu-text">Profile</span>}
                     </span>
                 </li>
+                <li className="nav-item pb-1">
+                    <span
+                        className={`nav-link navColors ${isActive("/catagory") ? "active" : ""}`}
+                        onClick={() => handleNavigation("/catagory")}
+                    >
+                        <i className="bi bi-basket"></i>
+                        {(!isOpen && !isMobilePage) && <span className="menu-text">Category</span>}
+                    </span>
+                </li>
             </ul>
         </div>
     );
