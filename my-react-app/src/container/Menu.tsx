@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import biryani from '../assets/images/biryani.jpg';
 import AddMenuModal from '../component/AddMenu';
 import { menuItems } from '../utils/const';
@@ -8,13 +8,14 @@ function Menu() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [menuId, setMenuId] = useState(null);
+    const [isMobilePage, setMobilePage] = useState(false);
 
-    const handleEdit = (id:any) => {
+    const handleEdit = (id: any) => {
         setMenuId(id);
         setIsModalVisible(true);
     };
 
-    const handleDelete = (id:any) => {
+    const handleDelete = (id: any) => {
         setMenuId(id);
         setShowPopup(true);
     };
@@ -30,11 +31,24 @@ function Menu() {
     const toggleModal = () => {
         setIsModalVisible(!isModalVisible);
     };
+    const handleResize = () => {
+        console.log(window.innerWidth < 600,":::::::::::skdk:::::::::")
+        setMobilePage(window.innerWidth < 600)
+    };
 
+    useEffect(() => {
+        handleResize()
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+console.log(isMobilePage,"ch")
     return (
         <div className="container mt-4 menu">
             <div className="row mb-4">
-                <div className="col-md-6 col-12 mb-2 mb-md-0">
+                <div className="col-md-6 col-sm-6 col-10 mb-2 mb-md-0">
                     <div className="input-group">
                         <span
                             className="input-group-text"
@@ -52,14 +66,14 @@ function Menu() {
                         />
                     </div>
                 </div>
-                <div className="col-md-6 col-12 text-md-end text-center">
+                <div className="col-md-6 col-sm-6 col-2 text-md-end text-center">
                     <button className="btn btn-primary" onClick={toggleModal}>
-                        Add Menu
+                        {isMobilePage ? "+" : "Add Menu"}
                     </button>
                 </div>
             </div>
             <h3 className="menuheader">Menu</h3>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 scrollable-container">
                 {menuItems.map((item) => (
                     <div className="col" key={item.id}>
                         <div className="card h-100 position-relative">

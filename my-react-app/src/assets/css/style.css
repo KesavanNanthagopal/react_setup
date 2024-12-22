@@ -46,6 +46,10 @@
   width: 4%;
 }
 
+.sidebar.shrink-mobile{
+  width: 16%;
+}
+
 .sidebar .menu-icon {
   display: inline-block;
 }
@@ -263,6 +267,10 @@
 }
 
 /* ------------------------------------------------ADD MENU ------------------------------------------*/
+.scrollable-container {
+  max-height: 70vh;
+  overflow-y: auto;
+}
 
 .modal-header {
   border-bottom: 1px solid #ddd;

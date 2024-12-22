@@ -5,4 +5,8 @@ export const menuItems = [
     { id: 4, name: "Mutton Curry", price: "$18.99", image: "mutton.jpg" },
     { id: 5, name: "Veg Fried Rice", price: "$9.99", image: "friedrice.jpg" },
     { id: 6, name: "Butter Naan", price: "$2.99", image: "naan.jpg" },
+    { id: 6, name: "Butter Naan", price: "$2.99", image: "naan.jpg" },
+    { id: 6, name: "Butter Naan", price: "$2.99", image: "naan.jpg" },
+    { id: 6, name: "Butter Naan", price: "$2.99", image: "naan.jpg" },
+    { id: 6, name: "Butter Naan", price: "$2.99", image: "naan.jpg" },
 ];
