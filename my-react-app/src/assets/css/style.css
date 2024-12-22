@@ -455,7 +455,7 @@
   background-color: #efefef;
 }
 .order-row{
-  height: 100% !important;
+  height: 80% !important;
 }
 .order-btn-active{
   color: #fcf9f7 !important;
@@ -533,4 +533,11 @@
   border: 1px solid rgb(160, 158, 158);
   border-radius: 5px;
   margin: 10px;
+}
+.order-mobile-height{
+  max-height: 60vh;
+}
+
+.order-web-height{
+  max-height: 40vw !important;
 }
