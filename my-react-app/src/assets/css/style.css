@@ -551,3 +551,7 @@
 .order-web-height{
   max-height: 40vw !important;
 }
+/*----*/
+.error-message{
+  font-size: smaller !important;
+}

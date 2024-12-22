@@ -5,15 +5,26 @@ interface AddCategoryModalProps {
   onClose: () => void;
 }
 
-const AddCategoryModalProps: React.FC<AddCategoryModalProps> = ({ isVisible, onClose }) => {
+const AddCategoryModal: React.FC<AddCategoryModalProps> = ({ isVisible, onClose }) => {
   const [itemName, setItemName] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const [errors, setErrors] = useState({ itemName: "", image: "" });
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  const validateForm = () => {
+    const newErrors: { itemName: string; image: string } = { itemName: "", image: "" };
+    if (!itemName.trim()) newErrors.itemName = "Category name is required.";
+    if (!image) newErrors.image = "Image is required.";
+    setErrors(newErrors);
+    return !newErrors.itemName && !newErrors.image;
+  };
+
   const handleSubmit = () => {
-    console.log("Form Submitted", { itemName, image });
-    clearStates();
-    onClose();
+    if (validateForm()) {
+      console.log("Form Submitted", { itemName, image });
+      clearStates();
+      onClose();
+    }
   };
 
   const handleCancel = () => {
@@ -24,6 +35,7 @@ const AddCategoryModalProps: React.FC<AddCategoryModalProps> = ({ isVisible, onC
   const clearStates = () => {
     setItemName("");
     setImage(null);
+    setErrors({ itemName: "", image: "" });
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -36,6 +48,7 @@ const AddCategoryModalProps: React.FC<AddCategoryModalProps> = ({ isVisible, onC
       reader.onloadend = () => {
         if (reader.result) {
           setImage(reader.result as string);
+          setErrors((prevErrors) => ({ ...prevErrors, image: "" }));
         }
       };
       reader.readAsDataURL(file);
@@ -81,27 +94,36 @@ const AddCategoryModalProps: React.FC<AddCategoryModalProps> = ({ isVisible, onC
               </div>
               <div className="modal-body">
                 <div className="mb-3">
-                  <label htmlFor="itemName" className="form-label">Category Name</label>
+                  <label htmlFor="itemName" className="form-label">
+                    Category Name
+                  </label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control ${errors.itemName ? "is-invalid" : ""}`}
                     id="itemName"
                     value={itemName}
-                    onChange={(e) => setItemName(e.target.value)}
+                    onChange={(e) => {
+                      setItemName(e.target.value);
+                      setErrors((prevErrors) => ({ ...prevErrors, itemName: "" }));
+                    }}
                   />
+                  {errors.itemName && <div className="text-danger">{errors.itemName}</div>}
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="imageUpload" className="form-label">Select Image</label>
+                  <label htmlFor="imageUpload" className="form-label">
+                    Select Image
+                  </label>
                   <input
                     type="file"
-                    className="form-control"
+                    className={`form-control ${errors.image ? "is-invalid" : ""}`}
                     id="imageUpload"
                     accept="image/*"
                     onChange={handleImageChange}
                     ref={fileInputRef}
                   />
+                  {errors.image && <div className="text-danger">{errors.image}</div>}
                 </div>
-                
+
                 {image && (
                   <div className="mb-3 d-flex justify-content-center position-relative">
                     <img
@@ -148,4 +170,4 @@ const AddCategoryModalProps: React.FC<AddCategoryModalProps> = ({ isVisible, onC
   );
 };
 
-export default AddCategoryModalProps;
+export default AddCategoryModal;

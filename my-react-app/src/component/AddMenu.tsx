@@ -12,13 +12,31 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
   const [gst, setGst] = useState("");
   const [vegType, setVegType] = useState("veg");
   const [image, setImage] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  const validateInputs = () => {
+    const newErrors: Record<string, string> = {};
+    if (!itemName.trim()) newErrors.itemName = "Item Name is required.";
+    if (!itemPrice.trim()) newErrors.itemPrice = "Item Price is required.";
+    if (!deliveryFee.trim()) newErrors.deliveryFee = "Delivery Fee is required.";
+    if (!gst.trim()) newErrors.gst = "GST is required.";
+    if (!image) newErrors.image = "An image is required.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = () => {
+    if (!validateInputs()) return;
     console.log("Form Submitted", { vegType, itemName, itemPrice, deliveryFee, gst, image });
     clearStates();
     onClose();
   };
+
+  const onPopupClose=()=>{
+    clearStates();
+    onClose()
+  }
 
   const handleCancel = () => {
     clearStates();
@@ -32,6 +50,7 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
     setGst("");
     setVegType("veg");
     setImage(null);
+    setErrors({});
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -44,6 +63,7 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
       reader.onloadend = () => {
         if (reader.result) {
           setImage(reader.result as string);
+          setErrors((prev) => ({ ...prev, image: "" }));
         }
       };
       reader.readAsDataURL(file);
@@ -71,7 +91,7 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1040,
           }}
-          onClick={onClose}
+          onClick={onPopupClose}
         />
       )}
       {isVisible && (
@@ -83,7 +103,7 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
                 <button
                   type="button"
                   className="btn-close"
-                  onClick={onClose}
+                  onClick={onPopupClose}
                   aria-label="Close"
                 ></button>
               </div>
@@ -116,42 +136,58 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
                   <label htmlFor="itemName" className="form-label">Item Name</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className={`form-control ${errors.itemName ? "is-invalid" : ""}`}
                     id="itemName"
                     value={itemName}
-                    onChange={(e) => setItemName(e.target.value)}
+                    onChange={(e) => {
+                      setItemName(e.target.value);
+                      setErrors((prev) => ({ ...prev, itemName: "" }));
+                    }}
                   />
+                  {errors.itemName && <div className="text-danger error-message">{errors.itemName}</div>}
                 </div>
                 <div className="row">
                   <div className="col-4 mb-4">
                     <label htmlFor="itemPrice" className="form-label">Item Price</label>
                     <input
                       type="number"
-                      className="form-control"
+                      className={`form-control ${errors.itemPrice ? "is-invalid" : ""}`}
                       id="itemPrice"
                       value={itemPrice}
-                      onChange={(e) => setItemPrice(e.target.value)}
+                      onChange={(e) => {
+                        setItemPrice(e.target.value);
+                        setErrors((prev) => ({ ...prev, itemPrice: "" }));
+                      }}
                     />
+                    {errors.itemPrice && <div className="text-danger error-message">{errors.itemPrice}</div>}
                   </div>
                   <div className="col-4 mb-4">
                     <label htmlFor="deliveryFee" className="form-label">Delivery Fee</label>
                     <input
                       type="number"
-                      className="form-control"
+                      className={`form-control ${errors.deliveryFee ? "is-invalid" : ""}`}
                       id="deliveryFee"
                       value={deliveryFee}
-                      onChange={(e) => setDeliveryFee(e.target.value)}
+                      onChange={(e) => {
+                        setDeliveryFee(e.target.value);
+                        setErrors((prev) => ({ ...prev, deliveryFee: "" }));
+                      }}
                     />
+                    {errors.deliveryFee && <div className="text-danger error-message">{errors.deliveryFee}</div>}
                   </div>
                   <div className="col-4 mb-4">
                     <label htmlFor="gst" className="form-label">GST</label>
                     <input
                       type="number"
-                      className="form-control"
+                      className={`form-control ${errors.gst ? "is-invalid" : ""}`}
                       id="gst"
                       value={gst}
-                      onChange={(e) => setGst(e.target.value)}
+                      onChange={(e) => {
+                        setGst(e.target.value);
+                        setErrors((prev) => ({ ...prev, gst: "" }));
+                      }}
                     />
+                    {errors.gst && <div className="text-danger error-message">{errors.gst}</div>}
                   </div>
                 </div>
 
@@ -159,12 +195,13 @@ const AddMenuModal: React.FC<AddMenuModalProps> = ({ isVisible, onClose }) => {
                   <label htmlFor="imageUpload" className="form-label">Select Image</label>
                   <input
                     type="file"
-                    className="form-control"
+                    className={`form-control ${errors.image ? "is-invalid" : ""}`}
                     id="imageUpload"
                     accept="image/*"
                     onChange={handleImageChange}
                     ref={fileInputRef}
                   />
+                  {errors.image && <div className="text-danger error-message">{errors.image}</div>}
                 </div>
                 
                 {image && (
