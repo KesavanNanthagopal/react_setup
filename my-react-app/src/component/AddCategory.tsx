@@ -8,12 +8,13 @@ interface AddCategoryModalProps {
 const AddCategoryModal: React.FC<AddCategoryModalProps> = ({ isVisible, onClose }) => {
   const [itemName, setItemName] = useState("");
   const [image, setImage] = useState<string | null>(null);
-  const [errors, setErrors] = useState({ itemName: "", image: "" });
+  const [errors, setErrors] = useState({ itemName: "", image: "",itemSku:"" });
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const validateForm = () => {
-    const newErrors: { itemName: string; image: string } = { itemName: "", image: "" };
+    const newErrors: { itemName: string; image: string,itemSku:string } = { itemName: "", image: "" ,itemSku:""};
     if (!itemName.trim()) newErrors.itemName = "Category name is required.";
+    if (!itemName.trim()) newErrors.itemSku = "Category SKU is required.";
     if (!image) newErrors.image = "Image is required.";
     setErrors(newErrors);
     return !newErrors.itemName && !newErrors.image;
@@ -35,7 +36,7 @@ const AddCategoryModal: React.FC<AddCategoryModalProps> = ({ isVisible, onClose 
   const clearStates = () => {
     setItemName("");
     setImage(null);
-    setErrors({ itemName: "", image: "" });
+    setErrors({ itemName: "", image: "",itemSku:"" });
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
     }
@@ -76,7 +77,7 @@ const AddCategoryModal: React.FC<AddCategoryModalProps> = ({ isVisible, onClose 
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1040,
           }}
-          onClick={onClose}
+          onClick={handleCancel}
         />
       )}
       {isVisible && (
@@ -88,7 +89,7 @@ const AddCategoryModal: React.FC<AddCategoryModalProps> = ({ isVisible, onClose 
                 <button
                   type="button"
                   className="btn-close"
-                  onClick={onClose}
+                  onClick={handleCancel}
                   aria-label="Close"
                 ></button>
               </div>
@@ -108,6 +109,22 @@ const AddCategoryModal: React.FC<AddCategoryModalProps> = ({ isVisible, onClose 
                     }}
                   />
                   {errors.itemName && <div className="text-danger">{errors.itemName}</div>}
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="itemName" className="form-label">
+                    Category SKU
+                  </label>
+                  <input
+                    type="text"
+                    className={`form-control ${errors.itemSku ? "is-invalid" : ""}`}
+                    id="itemName"
+                    value={itemName}
+                    onChange={(e) => {
+                      setItemName(e.target.value);
+                      setErrors((prevErrors) => ({ ...prevErrors, itemSku: "" }));
+                    }}
+                  />
+                  {errors.itemName && <div className="text-danger">{errors.itemSku}</div>}
                 </div>
                 <div className="mb-3">
                   <label htmlFor="imageUpload" className="form-label">

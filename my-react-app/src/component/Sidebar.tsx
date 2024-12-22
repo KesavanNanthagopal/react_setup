@@ -67,7 +67,7 @@ const Sidebar = ({ isOpen }: any) => {
                         className={`nav-link navColors ${isActive("/catagory") ? "active" : ""}`}
                         onClick={() => handleNavigation("/catagory")}
                     >
-                        <i className="bi bi-basket"></i>
+                        <i className="bi bi-list-columns"></i>
                         {(!isOpen && !isMobilePage) && <span className="menu-text">Category</span>}
                     </span>
                 </li>
